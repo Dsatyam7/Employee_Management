@@ -1,0 +1,36 @@
+<html>
+<head>
+    <title>Employee List</title>
+</head>
+<body>
+    <h2>Employee List</h2>
+    <a href="/employees/add">Add New Employee</a>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Position</th>
+            <th>Salary</th>
+            <th>Date of Joining</th>
+            <th>Actions</th>
+        </tr>
+        {% for emp in employees %}
+        <tr>
+            <td>{{ emp.employee_id }}</td>
+            <td>{{ emp.name }}</td>
+            <td>{{ emp.email }}</td>
+            <td>{{ emp.position }}</td>
+            <td>{{ emp.salary }}</td>
+            <td>{{ emp.date_of_joining }}</td>
+            <td>
+                <a href="/employees/edit/{{ emp.employee_id }}">Edit</a> |
+                <form method="POST" action="/employees/delete/{{ emp.employee_id }}" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
